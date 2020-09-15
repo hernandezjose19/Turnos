@@ -57,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'Templates')
+            os.path.join(BASE_DIR, 'Templates'), os.path.join(BASE_DIR, 'Templates/Password_change')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -126,3 +126,9 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'Home'
 LOGOUT_REDIRECT_URL = 'Login'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'antonioaljorna@gmail.com'
+EMAIL_HOST_PASSWORD = 'Amoeloboe123'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.Email_Backend'

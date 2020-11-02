@@ -1,0 +1,6 @@
+<h1>Por favor ingresa tus datos</h1>
+<form method="post">
+ {% csrf_token %}
+ {{ formu.as_p }}
+ <input type="submit" value="Asignar turno">
+</form>

@@ -1,0 +1,41 @@
+<h1>Por favor, tome nota del numero de turno a seleccionar y anotelo</h1>
+
+<table>
+
+<tr>
+    <th>Numero de turno</th>
+    <th>Fecha</th>
+    <th>Hora</th>
+    <th>Doctor</th>
+    <th>Especialidad</th>
+
+    
+
+</tr>
+
+
+
+
+{% for turnos in turno %}
+ <tr>
+    
+    <td> {{ turnos.id }}</td>
+    <td>{{ turnos.Fecha }}</td>
+    <td>{{ turnos.Hora }}</td>
+    <td>{{ turnos.Doctor }}</td>
+    <td> {{ turnos.Especialidad }}</td>
+
+    {% endfor %}
+ </tr>
+</table>
+<a href="{% url 'Turnos' %}">Reservar turno</a>
+ 
+
+
+
+
+
+
+
+
+

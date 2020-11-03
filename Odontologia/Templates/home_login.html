@@ -32,6 +32,7 @@
 </table>
 
 {% block a %}
-<a href='{% url "Home" %}'>Logout</a>
+<a href='{% url "Logout" %}'>Logout</a>
 <a href="{% url 'Busqueda avanzada' %}">Busqueda Avanzada</a>
+<p>Usuario: {{ user.username }} </p>
 {% endblock %}

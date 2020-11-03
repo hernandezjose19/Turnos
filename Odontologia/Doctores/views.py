@@ -5,7 +5,7 @@ from Doctores.models import TurnosDisponibles, TurnosAsignados
 import sqlite3
 from django.contrib.auth.decorators import login_required
 
-@login_required
+@login_required(login_url='doctores/login/')
 def Inicio(request):
 
     conn = sqlite3.connect("db.sqlite3") #ESta vista devuelve TODOS los turnos asignados a los doctores, en la url: doctores/login/home/
@@ -56,6 +56,8 @@ def Home(request):
 
     return render(request, 'home.html')
 
+
+@login_required(login_url='doctores/login/')
 def Busqueda_avanzada(request):
 
     if request.method == "POST":

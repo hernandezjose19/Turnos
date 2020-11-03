@@ -1,0 +1,10 @@
+
+
+<h1>Ingrese el nombre del doctor</h1>
+<form method="post">
+ {% csrf_token %}
+ {{ resultado.as_p }}
+ <input type="submit" value="Buscar">
+</form>
+
+<a href="{% url 'Home Login' %}">Volver a todos los turnos</a>

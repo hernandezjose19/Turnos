@@ -15,7 +15,8 @@ urlpatterns = [
     path('reset-confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name="Password confirm"),
     path('reset-complete/', PasswordResetCompleteView.as_view(), name="Password complete"),
     path('turnos/', views.TomandoTurnos, name="Turnos"),
-    path('turnos/disponibles/', views.MostrandoTurnos, name="Turnos libres")
+    path('turnos/disponibles/', views.MostrandoTurnos, name="Turnos libres"),
+    path('login/home/busqueda/', views.Busqueda_avanzada, name = "Busqueda avanzada")
 
 
 

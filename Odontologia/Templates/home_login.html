@@ -1,8 +1,37 @@
 <!--ACA SE MOSTRARAN LOS TURNOS ASIGNADOS A LOS DOCTORES-->
 <title>Turnos Asignados</title>
+<table>
+<tr>
+
+    <th>Fecha</th>
+    <th>Hora</th>
+    <th>Doctor</th>
+    <th>Paciente</th>
+    <th>DNI</th>
+    <th>Descripcion</th>
 
 
+</tr>
 
 
+{% for i in resultado %}
+<tr>
 
-<a href='{% url "Login" %}'>Logout</a>
+    
+
+    <td>{{ i.0 }}</td>
+    <td>{{ i.1 }}</td>
+    <td>{{ i.2 }}</td>
+    <td>{{ i.3 }} {{ i.4 }}</td>
+    <td>{{ i.5 }}</td>
+    <td>{{ i.6 }}</td>
+
+    {% endfor %}
+
+</tr>
+</table>
+
+{% block a %}
+<a href='{% url "Home" %}'>Logout</a>
+<a href="{% url 'Busqueda avanzada' %}">Busqueda Avanzada</a>
+{% endblock %}

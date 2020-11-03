@@ -1,2 +1,11 @@
 <h1>SU TURNO HA SIDO ASIGNADO CON EXITO!</h1>
 <a href=" {% url 'Home' %}">Volver al inicio</a>
+
+{% for i in consulta %}
+
+<p>La fecha de su turno es: {{ i.0 }}</p>
+<p>A las: {{ i.1 }}</p>
+<p>En la especialidad de:{{i.2 }}</p>
+<p>Con el Doctor: {{i.3 }}</p>
+
+{% endfor %}

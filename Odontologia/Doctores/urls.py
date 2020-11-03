@@ -1,13 +1,13 @@
 from django.urls import path
 from Doctores import views
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
-
+from django.contrib.auth.decorators import login_required
 
 
 
 urlpatterns = [
     path('home', views.Home, name="Home"), #Este home, sera el home principal, tendra redireccionamientos a reserva de turnos y acceso doctores(es decir, al login de doctores)
-    path('login/home/', views.Inicio, name="Home Login"), #ESte Home es luego de que los doctores se loguean, es decir, seria el home de doctores
+    path('acceso/home/', views.Inicio, name="Home Login"), #ESte Home es luego de que los doctores se loguean, es decir, seria el home de doctores y veran los turnos asignados
     path('login/', LoginView.as_view(template_name = 'login.html'), name = 'Login'),
     path('logout/', LogoutView.as_view(template_name = 'login.html'), name = 'Logout'),
     path('reset-password/', PasswordResetView.as_view(), name="Reset password"),
@@ -16,7 +16,7 @@ urlpatterns = [
     path('reset-complete/', PasswordResetCompleteView.as_view(), name="Password complete"),
     path('turnos/', views.TomandoTurnos, name="Turnos"),
     path('turnos/disponibles/', views.MostrandoTurnos, name="Turnos libres"),
-    path('login/home/busqueda/', views.Busqueda_avanzada, name = "Busqueda avanzada")
+    path('acceso/home/busqueda/', login_required(views.Busqueda_avanzada), name = "Busqueda avanzada")
 
 
 

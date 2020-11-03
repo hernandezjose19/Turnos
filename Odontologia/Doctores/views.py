@@ -3,9 +3,11 @@ from django.http import HttpResponse
 from Doctores import forms
 from Doctores.models import TurnosDisponibles, TurnosAsignados
 import sqlite3
+from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='doctores/login/')
+
+@login_required
 def Inicio(request):
 
     conn = sqlite3.connect("db.sqlite3") #ESta vista devuelve TODOS los turnos asignados a los doctores, en la url: doctores/login/home/
@@ -29,7 +31,8 @@ def TomandoTurnos(request):
                 Descripcion = formu.cleaned_data["Descripcion"],
                 ID_Turno_Disponible = formu.cleaned_data["id_turno_libre"]
 
-            )#Esta vista se encarga de agendar los turnos(parte de arriba) y mostrar informacion acerca del turno una vez asignado(parte de abajo)url:doctores/turnos/ y retorna los datos del turno
+            )  #Esta vista se encarga de agendar los turnos(parte de arriba) y mostrar informacion acerca del turno una vez asignado(parte de abajo)url:doctores/turnos/ y retorna los datos del turno
+            
             a = formu.cleaned_data["id_turno_libre"]
             conn = sqlite3.connect("db.sqlite3")
             cursor = conn.cursor()
@@ -57,7 +60,7 @@ def Home(request):
     return render(request, 'home.html')
 
 
-@login_required(login_url='doctores/login/')
+@login_required
 def Busqueda_avanzada(request):
 
     if request.method == "POST":

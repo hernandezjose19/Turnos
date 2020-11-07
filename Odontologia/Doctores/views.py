@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from Doctores import forms
 from Doctores.models import TurnosDisponibles, TurnosAsignados
 import sqlite3
-from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
 
@@ -22,8 +21,10 @@ def Inicio(request):
 def TomandoTurnos(request):
 
     if request.method == "POST":
+
         formu = forms.AsignandoTurnos(request.POST)
         if formu.is_valid():
+
             TurnosAsignados.objects.create(
                 Nombre = str(formu.cleaned_data["Nombre"]).title(),
                 Apellido = str(formu.cleaned_data["Apellido"]).title(),
@@ -47,6 +48,7 @@ def TomandoTurnos(request):
         ctx = {"formu":formulario}
         return render(request, 'agendando_turnos.html', ctx)
 
+
 def MostrandoTurnos(request):
 
 #Esta vista se encarga de mostrar los turnos disponibles en la url: doctores/turnos/disponibles/
@@ -54,6 +56,7 @@ def MostrandoTurnos(request):
     turnos = TurnosDisponibles.objects.all()
     ctx = {"turno":turnos}
     return render(request, 'turnos_disponibles.html', ctx)
+
 
 def Home(request):
 
@@ -64,8 +67,10 @@ def Home(request):
 def Busqueda_avanzada(request):
 
     if request.method == "POST":
+
         formu = forms.BuscandoDoctor(request.POST)
         if formu.is_valid():
+
             conn = sqlite3.connect("db.sqlite3")
             cursor = conn.cursor()
             nombre_doctor = str(formu.cleaned_data["Doctor"]).title()
@@ -79,3 +84,30 @@ def Busqueda_avanzada(request):
         formu = forms.BuscandoDoctor()
         ctx = {"resultado": formu}
         return render(request, 'busqueda.html', ctx)
+
+
+def Turnos_pacientes(request):
+    if request.method == "POST":
+        
+        formu = forms.TurnosPaciente(request.POST)
+        
+        if formu.is_valid():
+        
+            dni = formu.cleaned_data['DNI']
+            connex = sqlite3.connect("db.sqlite3")
+            cursor = connex.cursor()
+            consulta = ("SELECT * FROM Doctores_turnosasignados WHERE DNI == ?", (dni,))
+            cursor.execute(*consulta)
+            resultado = cursor.fetchall()
+            ctx = {"datos_turno_paciente":resultado}
+            return render(request, 'turno_paciente.html', ctx)
+
+    else:
+
+        formu = forms.TurnosPaciente()
+        ctx = {"formu":formu}
+        return render(request, 'dni_paciente.html', ctx )
+
+
+
+

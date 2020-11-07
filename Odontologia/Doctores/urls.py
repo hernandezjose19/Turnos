@@ -16,7 +16,9 @@ urlpatterns = [
     path('reset-complete/', PasswordResetCompleteView.as_view(), name="Password complete"),
     path('turnos/', views.TomandoTurnos, name="Turnos"),
     path('turnos/disponibles/', views.MostrandoTurnos, name="Turnos libres"),
-    path('acceso/home/busqueda/', login_required(views.Busqueda_avanzada), name = "Busqueda avanzada")
+    path('acceso/home/busqueda/', login_required(views.Busqueda_avanzada), name = "Busqueda avanzada"),
+    path('mis-turnos/', views.Turnos_pacientes, name = "Turnos_de_los_pacientes"),
+    path("mis-turnos/cambiando-turno/", views.Cambiando_turnos_pacientes, name= "Cambio_turnos_pacientes")
 
 
 

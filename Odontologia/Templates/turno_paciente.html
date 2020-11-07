@@ -1,0 +1,51 @@
+<table>
+
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>DNI</th>
+        <th>Descripcion</th>
+        <th>ID de turno disponible</th>
+
+
+    </tr>
+
+{% for datos in datos_turno_paciente %}
+
+    <tr>
+        <td>{{ datos.1 }}</td>
+        <td>{{ datos.2 }}</td>
+        <td>{{datos.3 }}</td>
+        <td>{{ datos.4 }}</td>
+        <td>{{ datos.5 }}</td>
+
+        {% endfor %}
+
+    </tr>
+
+
+<a href="{% url 'Cambio_turnos_pacientes' %}">Cambiar un turno</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</table>

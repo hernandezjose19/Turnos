@@ -18,4 +18,11 @@ class BuscandoDoctor(forms.Form):
 
 class TurnosPaciente(forms.Form):
 
-    DNI = forms.IntegerField()
+    DNI = forms.IntegerField(label = "Por favor introduzca su DNI")
+
+
+class CambiandoTurnos(forms.Form):
+
+    ID_turno_nuevo = forms.IntegerField(label="ID de Turno nuevo")
+    ID_turno_actual = forms.IntegerField(label="ID de turno actual")
+    

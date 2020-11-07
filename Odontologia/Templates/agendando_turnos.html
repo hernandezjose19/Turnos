@@ -1,7 +1,14 @@
+{% block h1 %}
+
 <h1>Por favor ingresa tus datos</h1>
+{% endblock %}
 <form method="post">
  {% csrf_token %}
  {{ formu.as_p }}
+
+
+ {% block input %}
  <input type="submit" value="Asignar turno">
+ {% endblock %}
 </form>
 <a href="{% url 'Turnos libres' %}">Ver turnos nuevamente</a>

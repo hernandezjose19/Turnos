@@ -109,5 +109,32 @@ def Turnos_pacientes(request):
         return render(request, 'dni_paciente.html', ctx )
 
 
+def Cambiando_turnos_pacientes(request):
+
+
+    if request.method == "POST":
+
+        formu = forms.CambiandoTurnos(request.POST)
+        if formu.is_valid():
+
+            id_nuevo = formu.cleaned_data["ID_turno_nuevo"]
+            id_actual = formu.cleaned_data["ID_turno_actual"]
+            connec = sqlite3.connect("db.sqlite3")
+            cursor = connec.cursor()
+            consulta = ("UPDATE Doctores_turnosasignados SET ID_Turno_Disponible = ? WHERE ID_Turno_Disponible == (?)", (id_nuevo, id_actual) )
+            cursor.execute(*consulta)
+            connec.commit()
+            return render(request, 'turno_cambiado.html')
+
+    else:
+
+        formu = forms.CambiandoTurnos()
+        ctx = {"formu":formu}
+        return render(request, 'cambiando_turnos.html', ctx)
+
+
+
+
+
 
 

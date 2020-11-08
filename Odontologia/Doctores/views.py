@@ -86,7 +86,12 @@ def Busqueda_avanzada(request):
         return render(request, 'busqueda.html', ctx)
 
 
+
+#Esta vissta muestra los turnos a los pacientes una vez ingresado su dni
+
 def Turnos_pacientes(request):
+
+    
     if request.method == "POST":
         
         formu = forms.TurnosPaciente(request.POST)
@@ -96,7 +101,7 @@ def Turnos_pacientes(request):
             dni = formu.cleaned_data['DNI']
             connex = sqlite3.connect("db.sqlite3")
             cursor = connex.cursor()
-            consulta = ("SELECT * FROM Doctores_turnosasignados WHERE DNI == ?", (dni,))
+            consulta = ("SELECT * FROM Doctores_turnosasignados AS c JOIN Doctores_turnosdisponibles AS j ON c.ID_Turno_Disponible = j.id WHERE c.DNI = ?", (dni,))
             cursor.execute(*consulta)
             resultado = cursor.fetchall()
             ctx = {"datos_turno_paciente":resultado}
@@ -108,6 +113,9 @@ def Turnos_pacientes(request):
         ctx = {"formu":formu}
         return render(request, 'dni_paciente.html', ctx )
 
+
+
+#Los pacientes cambian sus turnos colocando el id del turno al cual quieren cambiar y seguido de su id de turno actual
 
 def Cambiando_turnos_pacientes(request):
 

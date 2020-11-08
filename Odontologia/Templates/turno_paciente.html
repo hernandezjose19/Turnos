@@ -1,10 +1,12 @@
 <table>
 
     <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
+
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Paciente</th>
         <th>DNI</th>
-        <th>Descripcion</th>
+        <th>Doctor</th>
         <th>ID de turno disponible</th>
 
 
@@ -13,11 +15,12 @@
 {% for datos in datos_turno_paciente %}
 
     <tr>
-        <td>{{ datos.1 }}</td>
-        <td>{{ datos.2 }}</td>
-        <td>{{datos.3 }}</td>
-        <td>{{ datos.4 }}</td>
-        <td>{{ datos.5 }}</td>
+        <td>{{ datos.7 }}</td>
+        <td>{{ datos.8 }}</td>
+        <td>{{datos.1  }} {{ datos.2 }}</td>
+        <td>{{ datos.3 }}</td>
+        <td>{{ datos.9 }}</td>
+        <td> {{ datos.5 }}</td>
 
         {% endfor %}
 
@@ -25,27 +28,5 @@
 
 
 <a href="{% url 'Cambio_turnos_pacientes' %}">Cambiar un turno</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </table>

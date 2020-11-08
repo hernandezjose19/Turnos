@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 
 urlpatterns = [
+    
     path('home', views.Home, name="Home"), #Este home, sera el home principal, tendra redireccionamientos a reserva de turnos y acceso doctores(es decir, al login de doctores)
     path('acceso/home/', views.Inicio, name="Home Login"), #ESte Home es luego de que los doctores se loguean, es decir, seria el home de doctores y veran los turnos asignados
     path('login/', LoginView.as_view(template_name = 'login.html'), name = 'Login'),

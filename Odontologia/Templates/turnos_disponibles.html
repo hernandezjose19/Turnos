@@ -8,6 +8,7 @@
     <th>Hora</th>
     <th>Doctor</th>
     <th>Especialidad</th>
+    <th>Estado</th>
 
     
 
@@ -19,11 +20,12 @@
 {% for turnos in turno %}
  <tr>
     
-    <td> {{ turnos.id }}</td>
-    <td>{{ turnos.Fecha }}</td>
-    <td>{{ turnos.Hora }}</td>
-    <td>{{ turnos.Doctor }}</td>
-    <td> {{ turnos.Especialidad }}</td>
+    <td> {{ turnos.0 }}</td>
+    <td>{{ turnos.1 }}</td>
+    <td>{{ turnos.2 }}</td>
+    <td>{{ turnos.3 }}</td>
+    <td> {{ turnos.4 }}</td>
+    <td>{{ turnos.5 }}</td>
 
     {% endfor %}
  </tr>
@@ -31,7 +33,6 @@
 <a href="{% url 'Turnos' %}">Reservar turno</a>
 <a href="{% url 'Home' %}">Home</a>
 <a href="{% url 'Turnos_de_los_pacientes' %}">Ver mis turnos</a>
-
 
 
 

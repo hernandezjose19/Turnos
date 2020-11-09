@@ -58,7 +58,13 @@ def TomandoTurnos(request):
 def MostrandoTurnos(request):
 
 
-    turnos = TurnosDisponibles.objects.all()
+    conex = sqlite3.connect("db.sqlite3")
+    cursor = conex.cursor()
+    sql = (
+        "SELECT CASE WHEN j.Fecha = c.Apellido THEN j.id ELSE j.id END  AS 'Numero de turno', CASE WHEN j.Fecha = c.Apellido THEN j.Fecha ELSE Fecha END  AS Fecha, CASE WHEN j.Fecha = c.Apellido THEN j.Hora ELSE Hora END  AS Hora, CASE WHEN j.Fecha = c.Apellido THEN j.Doctor ELSE Doctor END  AS Doctor, CASE WHEN j.Fecha = c.Apellido THEN j.Especialidad ELSE Especialidad END  AS Especialidad, CASE WHEN j.id = c.ID_Turno_Disponible THEN 'Ocupado' ELSE 'Disponible' END As Estado FROM Doctores_turnosdisponibles AS j LEFT JOIN Doctores_turnosasignados AS c ON j.id = c.ID_Turno_Disponible"
+    )
+    cursor.execute(sql)
+    turnos = cursor.fetchall()
     ctx = {"turno":turnos}
     return render(request, 'turnos_disponibles.html', ctx)
 

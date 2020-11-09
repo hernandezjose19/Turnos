@@ -6,10 +6,13 @@ import sqlite3
 from django.contrib.auth.decorators import login_required
 
 
+#Esta les muestra a los doctores todos los turnos que se han registrado
+
+
 @login_required
 def Inicio(request):
 
-    conn = sqlite3.connect("db.sqlite3") #ESta vista devuelve TODOS los turnos asignados a los doctores, en la url: doctores/login/home/
+    conn = sqlite3.connect("db.sqlite3") 
     cursor = conn.cursor()
     consulta = ("SELECT d.Fecha, d.Hora, d.Doctor, j.Nombre, j.Apellido, j.DNI, j.Descripcion FROM Doctores_turnosasignados AS j JOIN Doctores_turnosdisponibles AS d ON j.ID_Turno_Disponible == d.id")
     cursor.execute(consulta)
@@ -17,6 +20,8 @@ def Inicio(request):
     ctx = {"resultado":resultado}
     return render(request, 'home_login.html', ctx)
 
+
+#Aca los pacientes se asignan sus turnos
 
 def TomandoTurnos(request):
 
@@ -32,7 +37,7 @@ def TomandoTurnos(request):
                 Descripcion = formu.cleaned_data["Descripcion"],
                 ID_Turno_Disponible = formu.cleaned_data["id_turno_libre"]
 
-            )  #Esta vista se encarga de agendar los turnos(parte de arriba) y mostrar informacion acerca del turno una vez asignado(parte de abajo)url:doctores/turnos/ y retorna los datos del turno
+            )  
             
             a = formu.cleaned_data["id_turno_libre"]
             conn = sqlite3.connect("db.sqlite3")
@@ -48,10 +53,10 @@ def TomandoTurnos(request):
         ctx = {"formu":formulario}
         return render(request, 'agendando_turnos.html', ctx)
 
+#Aca muestra todos los turnos disponibles
 
 def MostrandoTurnos(request):
 
-#Esta vista se encarga de mostrar los turnos disponibles en la url: doctores/turnos/disponibles/
 
     turnos = TurnosDisponibles.objects.all()
     ctx = {"turno":turnos}
@@ -63,6 +68,8 @@ def Home(request):
     return render(request, 'home.html')
 
 
+#Esta vista permite a los doctores filtrar las busquedas por nombre de Doctor
+
 @login_required
 def Busqueda_avanzada(request):
 
@@ -71,12 +78,13 @@ def Busqueda_avanzada(request):
         formu = forms.BuscandoDoctor(request.POST)
         if formu.is_valid():
 
-            conn = sqlite3.connect("db.sqlite3")
-            cursor = conn.cursor()
+            conex = sqlite3.connect("db.sqlite3")
+            cursor = conex.cursor()
             nombre_doctor = str(formu.cleaned_data["Doctor"]).title()
             sql = ("SELECT d.Fecha, d.Hora, d.Doctor, j.Nombre, j.Apellido, j.DNI, j.Descripcion FROM Doctores_turnosasignados AS j JOIN Doctores_turnosdisponibles AS d ON j.ID_Turno_Disponible == d.id WHERE d.Doctor == ?", (nombre_doctor,))
             cursor.execute(*sql)
             resultado = cursor.fetchall()
+            conex.close()
             ctx = {"resultado":resultado}
             return render(request, 'resultado_busqueda.html', ctx)
 
@@ -99,11 +107,12 @@ def Turnos_pacientes(request):
         if formu.is_valid():
         
             dni = formu.cleaned_data['DNI']
-            connex = sqlite3.connect("db.sqlite3")
-            cursor = connex.cursor()
+            conex = sqlite3.connect("db.sqlite3")
+            cursor = conex.cursor()
             consulta = ("SELECT * FROM Doctores_turnosasignados AS c JOIN Doctores_turnosdisponibles AS j ON c.ID_Turno_Disponible = j.id WHERE c.DNI = ?", (dni,))
             cursor.execute(*consulta)
             resultado = cursor.fetchall()
+            conex.close()
             ctx = {"datos_turno_paciente":resultado}
             return render(request, 'turno_paciente.html', ctx)
 
@@ -115,7 +124,7 @@ def Turnos_pacientes(request):
 
 
 
-#Los pacientes cambian sus turnos colocando el id del turno al cual quieren cambiar y seguido de su id de turno actual
+#Los pacientes cambian sus turnos colocando el id del turno al cual quieren cambiar y seguido  su id de turno actual
 
 def Cambiando_turnos_pacientes(request):
 
@@ -127,11 +136,12 @@ def Cambiando_turnos_pacientes(request):
 
             id_nuevo = formu.cleaned_data["ID_turno_nuevo"]
             id_actual = formu.cleaned_data["ID_turno_actual"]
-            connec = sqlite3.connect("db.sqlite3")
-            cursor = connec.cursor()
+            conex = sqlite3.connect("db.sqlite3")
+            cursor = conex.cursor()
             consulta = ("UPDATE Doctores_turnosasignados SET ID_Turno_Disponible = ? WHERE ID_Turno_Disponible == (?)", (id_nuevo, id_actual) )
             cursor.execute(*consulta)
-            connec.commit()
+            conex.commit()
+            conex.close()
             return render(request, 'turno_cambiado.html')
 
     else:
@@ -141,8 +151,25 @@ def Cambiando_turnos_pacientes(request):
         return render(request, 'cambiando_turnos.html', ctx)
 
 
+def Cancelando_turno(request):
 
+    if request.method == "POST":
 
+        formu = forms.CancelandoTurnos(request.POST)
+        if formu.is_valid():
 
+            conex = sqlite3.connect("db.sqlite3")
+            cursor = conex.cursor()
+            id_turno_actual = formu.cleaned_data['ID_Turno_actual']
+            sql = ('DELETE FROM Doctores_turnosasignados WHERE ID_Turno_Disponible = ?', (id_turno_actual,))
+            cursor.execute(*sql)
+            conex.commit()
+            conex.close()
+            return HttpResponse("Turno cancelado con exito")
 
+    else:
+
+        formu = forms.CancelandoTurnos()
+        ctx = {"formu": formu}
+        return render(request, 'cancelando_turnos.html', ctx)
 

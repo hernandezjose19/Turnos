@@ -1,36 +1,40 @@
-<!--ACA SE MOSTRARAN LOS TURNOS ASIGNADOS A LOS DOCTORES-->
+<!DOCTYPE html>
+{% load static %}
+
 <title>Turnos Asignados</title>
-<table>
-<tr>
+<body>
+    
+    <table>
+        <tr>
 
-    <th>Fecha</th>
-    <th>Hora</th>
-    <th>Doctor</th>
-    <th>Paciente</th>
-    <th>DNI</th>
-    <th>Descripcion</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Doctor</th>
+            <th>Paciente</th>
+            <th>DNI</th>
+            <th>Descripcion</th>
 
 
-</tr>
+        </tr>
 
 
-{% for i in resultado %}
-<tr>
+    {% for i in resultado %}
+        <tr>
 
     
 
-    <td>{{ i.0 }}</td>
-    <td>{{ i.1 }}</td>
-    <td>{{ i.2 }}</td>
-    <td>{{ i.3 }} {{ i.4 }}</td>
-    <td>{{ i.5 }}</td>
-    <td>{{ i.6 }}</td>
+        <td>{{ i.0 }}</td>
+        <td>{{ i.1 }}</td>
+        <td>{{ i.2 }}</td>
+        <td>{{ i.3 }} {{ i.4 }}</td>
+        <td>{{ i.5 }}</td>
+        <td>{{ i.6 }}</td>
 
     {% endfor %}
 
-</tr>
-</table>
-
+        </tr>
+    </table>
+</body>
 {% block a %}
 <a href='{% url "Logout" %}'>Logout</a>
 <a href="{% url 'Busqueda avanzada' %}">Busqueda Avanzada</a>

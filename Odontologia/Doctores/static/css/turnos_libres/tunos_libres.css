@@ -1,0 +1,36 @@
+.tabla{
+    
+    border: 2px solid;
+    width: 1000px;
+    border-collapse: collapse;
+}
+
+.tabla td{
+
+    text-align: center;
+    border: 2px solid;
+}
+
+.tabla tr:hover{
+    background-color: rgb(92, 223, 5);
+}
+
+.tabla th{
+
+    border: 2px solid;
+    background-color: cyan;
+}
+
+.tabla{
+
+    margin: 150px auto;
+    width: 750px;
+}
+
+body{
+
+    text-align: center;
+}
+
+.tabla td{}
+

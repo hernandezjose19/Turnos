@@ -171,7 +171,7 @@ def Cancelando_turno(request):
             cursor.execute(*sql)
             conex.commit()
             conex.close()
-            return HttpResponse("Turno cancelado con exito")
+            return render(request, 'turno_cancelado.html')
 
     else:
 

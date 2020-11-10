@@ -1,41 +1,51 @@
-<h1>Por favor, tome nota del numero de turno a seleccionar y anotelo</h1>
+{% load static %}
+<!DOCTYPE html>
+    <html>
+        <head>
+            <link rel="stylesheet" href="{% static 'css/turnos_libres/tunos_libres.css' %}">
 
-<table>
+        </head>
+        <header>
+            <h1>TURNOS DISPONIBLES</h1>
+            <h2>Tome nota del numero de turno</h2>
+        </header>
 
-<tr>
-    <th>Numero de turno</th>
-    <th>Fecha</th>
-    <th>Hora</th>
-    <th>Doctor</th>
-    <th>Especialidad</th>
-    <th>Estado</th>
+        <body>
+            <table class="tabla">
+
+                <tr id = "cabezera">
+                    <th>Numero de turno</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Doctor</th>
+                    <th>Especialidad</th>
+                    <th>Estado</th>
 
     
 
-</tr>
+                </tr>
 
-
-
-
-{% for turnos in turno %}
- <tr>
+            {% for turnos in turno %}
+                <tr>
     
-    <td> {{ turnos.0 }}</td>
-    <td>{{ turnos.1 }}</td>
-    <td>{{ turnos.2 }}</td>
-    <td>{{ turnos.3 }}</td>
-    <td> {{ turnos.4 }}</td>
-    <td>{{ turnos.5 }}</td>
+                    <td> {{ turnos.0 }}</td>
+                    <td>{{ turnos.1 }}</td>
+                    <td>{{ turnos.2 }}</td>
+                    <td>{{ turnos.3 }}</td>
+                    <td> {{ turnos.4 }}</td>
+                    <td>{{ turnos.5 }}</td>
 
-    {% endfor %}
- </tr>
-</table>
-<a href="{% url 'Turnos' %}">Reservar turno</a>
-<a href="{% url 'Home' %}">Home</a>
-<a href="{% url 'Turnos_de_los_pacientes' %}">Ver mis turnos</a>
+            
+                </tr>
+            {% endfor %}
+            </table>
+            <a class ="Enlaces_1" href="{% url 'Turnos' %}">Reservar turno</a>
+            <a class ="Enlaces_1" href="{% url 'Home' %}">Home</a>
+            <a class ="Enlaces_1" href="{% url 'Turnos_de_los_pacientes' %}">Ver mis turnos</a>
+        </body>
 
 
-
+    </html>
 
 
 

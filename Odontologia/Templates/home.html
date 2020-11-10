@@ -1,6 +1,16 @@
-<h1>Bienvenidos a TUSONRISA</h1>
+{% load static %}
+<!DOCTYPE html>
+    <html>
+        <head>
+            <link rel="stylesheet" href="{% static 'css/home_principal.css' %}">
+            <img id = "Fondo_principal" src="{% static 'img/home_principal/imagen_home.jpg' %}">
+        </head>
+        <header>
+            <h1>Bienvenidos a TUSONRISA</h1>
+        </header>
 
-
-
-<a href="{% url 'Turnos libres' %}">Ver turnos disponibles</a>
-<a href="{% url 'Login' %}">Acceso Doctores</a>
+        <body id = "enlace">
+            <a id = "Enlaces" href="{% url 'Turnos libres' %}">Ver turnos disponibles</a>
+            <a id = "Enlaces" href="{% url 'Login' %}">Acceso Doctores</a>
+        </body>
+    </html>

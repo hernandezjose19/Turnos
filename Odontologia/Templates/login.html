@@ -1,27 +1,23 @@
 {% load static %}
 <!DOCTYPE html>
-
-
-
-
-     
-     <title>Login</title>
+    <head>
+        <link link rel="stylesheet"  href="{% static 'css/home_doctores/login.css' %}">
     </head>
     <body>
-        <h2>Autenticacion</h2>
-        <form action="" method="POST">
+        <header>
+            <h1>Autenticacion</h1>
+        </header>
+        <form method="POST">
             {% csrf_token %}
-            <table>
-        
-                {{ form.as_p}}
-            </table>
-            <input type="submit" value="login">
-            <a href= "{% url 'Home' %}">Home</a>
-            <a href="{% url 'Reset password' %}">Olvide mi password</a>
-            <img src="{% static 'img/dientes.jpg' %}">
+            <p>{{ form }}</p>
+            <input class = "Login" type="submit" value="Login">
         </form>
+        <nav>
+            
+                <a class = "Home" href= "{% url 'Home' %}">Home</a>
+                <a class = "Reset" href = "{% url 'Reseteo' %}">Olvide mi password</a>
+            
+        </nav>
     </body>
-
-
-
 </html>
+

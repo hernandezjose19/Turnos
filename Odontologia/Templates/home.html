@@ -1,16 +1,25 @@
 {% load static %}
 <!DOCTYPE html>
     <html>
-        <head>
-            <link rel="stylesheet" href="{% static 'css/home_principal.css' %}">
-            <img id = "Fondo_principal" src="{% static 'img/home_principal/imagen_home.jpg' %}">
-        </head>
-        <header>
-            <h1>Bienvenidos a TUSONRISA</h1>
-        </header>
 
-        <body id = "enlace">
-            <a id = "Enlaces" href="{% url 'Turnos libres' %}">Ver turnos disponibles</a>
-            <a id = "Enlaces" href="{% url 'Login' %}">Acceso Doctores</a>
+        <head>
+            <link rel="stylesheet"  href="{% static 'css/home_principal/home_principal.css' %}">
+
+        </head>
+        <body>
+            <header>
+                
+                <h1 class="Mover">Bienvenidos a TUSONRISA</h1>
+                
+            </header>
+            <nav>
+                <ul>
+                    <li class="Arriba"><a href="{% url 'Turnos libres' %}">Ver turnos disponibles</a></li>
+                    <li class="Abajo"><a href="{% url 'Login' %}">Acceso Doctores</a></li>
+                </ul>
+            </nav>
         </body>
+        <footer>
+            <a class= "Instagram" href="https://www.instagram.com/tusonrisa.arg/?hl=es-la">Siguenos en instagram haciendo click aca <--</a>
+        </footer>
     </html>

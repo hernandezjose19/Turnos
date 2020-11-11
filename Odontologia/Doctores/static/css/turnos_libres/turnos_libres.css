@@ -1,7 +1,7 @@
 .tabla{
     
     border: 2px solid;
-    width: 1000px;
+    width: 100px;
     border-collapse: collapse;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .tabla tr:hover{
-    background-color: rgb(92, 223, 5);
+    background-color: cyan;
 }
 
 .tabla th{
@@ -20,7 +20,6 @@
     border: 2px solid;
     background-color: cyan;
 }
-
 .tabla{
 
     margin: 150px auto;
@@ -32,5 +31,22 @@ body{
     text-align: center;
 }
 
-.tabla td{}
+#cuerpo{
 
+    background-color: rgb(215, 171, 245);
+}
+ .tabla td{
+
+    color: black;
+ }
+
+.table td{
+
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+#toma_turno h2{
+    width: 400px;
+    height: 4px;
+}

@@ -1,0 +1,61 @@
+body {
+    background: rgb(114, 38, 185);
+}
+
+h1 {
+    font-size: 50px;
+    
+    position: relative;
+    top: 30px;
+    bottom: 20%;
+    left: 38%;
+    color: seashell;
+}
+
+
+
+
+
+form{
+
+    
+    width: 186px;
+    height: 48px;
+    position: relative;
+    left: 40%;
+    top: 260px;
+    color: seashell;
+
+}
+
+form .Login{
+
+    width: 186px;
+    background: seashell;
+    font-size: 20px;
+}
+
+p{
+    font-size: 25px;
+}
+
+.Home{
+    color: seashell;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    top: 415px;
+    left: 38%;
+    font-size: 25px;
+
+}
+
+.Reset{
+    color: seashell;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    top: 415px;
+    left: 40%;
+    font-size: 25px;
+}

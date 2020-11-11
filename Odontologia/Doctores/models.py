@@ -16,7 +16,7 @@ class TurnosAsignados(models.Model):
     Apellido = models.CharField(max_length=128)
     DNI = models.IntegerField()
     Descripcion = models.TextField(max_length=65535)
-    ID_Turno_Disponible = models.IntegerField(unique=True, null= True)#este campo debe ser unique = "True" para que no se repitan los turnos
+    ID_Turno_Disponible = models.IntegerField()#este campo debe ser unique = "True" para que no se repitan los turnos
 
 """Estos modelos de Profesor y Materias fueron solo de prueba, no van en la aplicacion"""
 

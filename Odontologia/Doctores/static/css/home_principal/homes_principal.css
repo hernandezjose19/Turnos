@@ -1,9 +1,11 @@
 .Mover{
-    margin: 30px;
+    
     position: relative;
     top: 80%;
     left: 37%;
     color: seashell;
+    width: 400px;
+    
 }
 
 .Arriba{

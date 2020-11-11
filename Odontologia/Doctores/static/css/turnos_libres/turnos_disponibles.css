@@ -1,0 +1,77 @@
+h1{
+    
+    position: relative;
+    top: 10%;
+    left: 37%;
+    color: seashell;
+    width: 360px;
+}
+
+h2{
+    position: relative;
+    color: seashell;
+    left: 38%;
+    width: 330px;
+}
+
+
+
+body{
+    background: rgb(114, 38, 185);
+}
+
+table{
+
+    position: relative;
+    top: 70px;
+    left: 25%;
+    border: 4px solid rgb(247, 154, 87);
+    border-collapse: collapse;
+    
+}
+
+td{
+    border: 4px solid rgb(247, 154, 87);
+    color: seashell;
+    text-align: center;
+    font-size: 17px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+table td:hover{
+    background: rgb(26, 211, 1);
+}
+
+table tr:hover{
+    background:black;
+}
+
+th{
+    color: seashell;
+    border: 1px;
+    background: black;
+    text-align: center;
+    padding: 5px;
+
+}
+
+a{
+    text-decoration: none;
+    color: seashell;
+}
+
+nav .Homes{
+    position: relative;
+    left: 15%;
+}
+
+nav .Reserva{
+    position: relative;
+    left: 45%;
+}
+
+nav .Turnos{
+    position: relative;
+    left: 70%;
+}

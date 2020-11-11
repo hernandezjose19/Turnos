@@ -11,7 +11,7 @@ urlpatterns = [
     path('acceso/home/', views.Inicio, name="Home Login"), #ESte Home es luego de que los doctores se loguean, es decir, seria el home de doctores y veran los turnos asignados
     path('login/', LoginView.as_view(template_name = 'login.html'), name = "Login"),
     path('logout/', LogoutView.as_view(template_name = 'login.html'), name = "Logout"),
-    path('turnos/', views.TomandoTurnos, name="Turnos"),
+    path('agendando-turnos/', views.TomandoTurnos, name="Turnos"),
     path('turnos/disponibles/', views.MostrandoTurnos, name="Turnos libres"),
     path('acceso/home/busqueda/', login_required(views.Busqueda_avanzada), name = "Busqueda avanzada"),
     path('mis-turnos/', views.Turnos_pacientes, name = "Turnos_de_los_pacientes"),

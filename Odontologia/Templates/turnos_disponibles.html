@@ -2,49 +2,39 @@
 <!DOCTYPE html>
     <html>
         <head>
-            <link rel="stylesheet" href="{% static 'css/turnos_libres/turnos_libres.css' %}">
-
+            <link rel="stylesheet" href="{% static 'css/turnos_libres/turnos_disponibles.css'%}">
         </head>
-        <header class = "toma_turno">
-            <h1>TURNOS DISPONIBLES</h1>
-            <h2>Tome nota del numero de turno</h2>
-        </header>
-
-        <body id = "cuerpo">
-            <table class="tabla">
-
-                <tr id = "cabezera">
+        <body>
+            <header >
+                <h1>TURNOS DISPONIBLES</h1>
+                <h2>Tome nota del numero de turno</h2>
+            </header>
+            <nav>
+                <a class = "Reserva" href="{% url 'Turnos' %}">Reservar turno</a>
+                <a class = "Homes" href="{% url 'Home' %}">Home</a>
+                <a class ="Turnos" href="{% url 'Turnos_de_los_pacientes' %}">Ver mis turnos</a>
+            </nav>
+            <table>                
+                <tr>
                     <th>Numero de turno</th>
                     <th>Fecha</th>
                     <th>Hora</th>
                     <th>Doctor</th>
                     <th>Especialidad</th>
                     <th>Estado</th>
-
-    
-
                 </tr>
-
             {% for turnos in turno %}
                 <tr>
-    
                     <td> {{ turnos.0 }}</td>
                     <td>{{ turnos.1 }}</td>
                     <td>{{ turnos.2 }}</td>
                     <td>{{ turnos.3 }}</td>
                     <td> {{ turnos.4 }}</td>
                     <td>{{ turnos.5 }}</td>
-
-            
                 </tr>
             {% endfor %}
             </table>
-            <a class ="Enlaces_1" href="{% url 'Turnos' %}">Reservar turno</a>
-            <a class ="Enlaces_1" href="{% url 'Home' %}">Home</a>
-            <a class ="Enlaces_1" href="{% url 'Turnos_de_los_pacientes' %}">Ver mis turnos</a>
         </body>
-
-
     </html>
 
 

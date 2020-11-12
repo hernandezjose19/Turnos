@@ -1,4 +1,13 @@
-<h1>Su cambio se ha hecho con exito! Revisa tu lista de turnos!</h1>
-
-
-<a href="{% url 'Turnos_de_los_pacientes' %}">Mis turnos</a>
+{% load static %}
+<!DOCTYPE html>
+    <html>
+        <head>
+            <link rel="stylesheet"  href="{% static 'css/cambiando_turnos/turno_cambiado.css' %}">
+        </head>
+        <body>
+            <header>
+                <h1>Su cambio se ha hecho con exito! Revisa tu lista de turnos!</h1>
+            </header>
+            <a href="{% url 'Turnos_de_los_pacientes' %}">Mis turnos</a>
+        </body>
+    </html>

@@ -1,0 +1,21 @@
+header h1{
+
+    width: 800px;
+    color: seashell;
+    position: relative;
+    top: 30px;
+    left: 500px;
+}
+
+body{
+    background:rgb(114, 38, 185) ;
+}
+
+a{
+    position: relative;
+    top: 150px;
+    left: 800px;
+    color: rgb(247, 154, 87);
+    text-decoration: none;
+    font-size: 30px;
+}

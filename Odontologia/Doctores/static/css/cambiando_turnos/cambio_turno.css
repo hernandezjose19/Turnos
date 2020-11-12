@@ -1,0 +1,43 @@
+body{
+    background: rgb(114, 38, 185);
+}
+
+body header h1{
+    position: relative;
+    top: 30px;
+    left: 580px;
+    width: 620px;
+    color: seashell;
+}
+
+form{
+
+    position: relative;
+    top: 180px;
+    left: 700px;
+    width: 400px;
+}
+
+form p{
+    font-size: 20px;
+    color: seashell;
+}
+
+form .Cambiar{
+    font-size: 20px;
+    background: rgb(247, 154, 87);
+    position: relative;
+    top: 40px;
+    left: 95px;
+
+}
+
+a{
+    position: relative;
+    top: 270px;
+    left: 740px;
+    text-decoration: none;
+    font-size: 30px;
+    color: rgb(247, 154, 87);
+
+}

@@ -1,14 +1,27 @@
-{% block h1 %}
+{% load static %}
 
-<h1>Por favor ingresa tus datos</h1>
-{% endblock %}
-<form method="post">
- {% csrf_token %}
- {{ formu.as_p }}
+<!DOCTYPE html>
+    <html>
+        <head>
+            <link rel="stylesheet"  href="{% static 'css/reserva/reserva_turnos.css' %}">
 
-
- {% block input %}
- <input type="submit" value="Asignar turno">
- {% endblock %}
-</form>
-<a href="{% url 'Turnos libres' %}">Ver turnos nuevamente</a>
+        </head>
+        <body>
+           
+                {% block h1 %}
+            <header>
+                <h1>Por favor ingresa tus datos</h1>
+            </header>
+                {% endblock %}
+            <form method="post">
+                {% csrf_token %}
+                {{ formu.as_p }}
+                {% block input %}
+                <input class = "Asignar" type="submit" value="Asignar turno">
+                {% endblock %}
+            </form>
+            <nav>
+            <a href="{% url 'Turnos libres' %}">Ver turnos nuevamente</a>
+            </nav>
+        </body>
+    </html>

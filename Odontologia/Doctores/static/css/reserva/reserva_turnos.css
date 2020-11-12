@@ -1,0 +1,41 @@
+body{
+    background: rgb(114, 38, 185);
+}
+
+h1{
+    position: relative;
+    top: 30px;
+    left: 40%;
+    color: seashell;
+    width: 380px;
+}
+
+form{
+    width: 400px;
+    height: 380px;
+    position: relative;
+    top: 100px;
+    left: 42%;
+    
+}
+
+form p{
+    color: rgb(247, 154, 87);
+    font-size: 25px;
+}
+
+form .Asignar{
+    background: rgb(247, 154, 87);
+    width: 175px;
+    height: 40px;
+    font-size: 20px;
+}
+
+nav a {
+    position: relative;
+    top: 150px;
+    left: 53%;
+    color: rgb(247, 154, 87);
+    text-decoration: none;
+    font-size: 30px;
+}

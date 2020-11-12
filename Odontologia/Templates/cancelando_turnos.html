@@ -1,10 +1,18 @@
-{% extends "agendando_turnos.html" %}
-
-{% block h1 %}
-    <h1>Por favor ingrese el ID de turno a cancelar</h1>
-{% endblock %}
-
-
-{% block input %}
-    <input type="submit" value="Cancelar turno">
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+    <html>
+        <head>
+            <link rel="stylesheet"  href="{% static 'css/cambiando_turnos/cancelando_turno.css' %}">
+        </head>
+        <body>
+            <header>
+                <h1>Por favor ingrese el ID de turno a cancelar</h1>
+            </header>
+            <form method="post">
+                {% csrf_token %}
+                {{ formu.as_p }}
+                <input class = "Cancelar" type="submit" value="Cancelar turno">
+            </form>
+            <a href="{% url 'Turnos_de_los_pacientes' %}">Volver a mis turnos</a>
+        </body>
+    </html>

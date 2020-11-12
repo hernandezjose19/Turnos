@@ -1,0 +1,42 @@
+body{
+    background: rgb(114, 38, 185);
+}
+
+header h1{
+    position: relative;
+    top: 30px;
+    left: 600px;
+    color: seashell;
+    width: 600px;
+}
+
+form{
+
+    width: 400px;
+    position: relative;
+    top: 150px;
+    left: 700px;
+}
+
+form p{
+    color: seashell;
+    font-size: 20px;
+}
+
+form .Cancelar{
+    background: rgb(247, 154, 87);
+    font-size: 20px;
+    position: relative;
+    top: 30px;
+    left: 90px;
+}
+
+a{
+
+    text-decoration: none;
+    color: rgb(247, 154, 87);
+    position: relative;
+    top: 240px;
+    left: 745px;
+    font-size: 30px;
+}

@@ -33,6 +33,8 @@ form .Login{
     width: 186px;
     background: seashell;
     font-size: 20px;
+    position: relative;
+    top: 10px;
 }
 
 p{
@@ -44,7 +46,7 @@ p{
     text-decoration: none;
     display: inline-block;
     position: relative;
-    top: 415px;
+    top: 480px;
     left: 38%;
     font-size: 25px;
 
@@ -55,7 +57,7 @@ p{
     text-decoration: none;
     display: inline-block;
     position: relative;
-    top: 415px;
+    top: 480px;
     left: 40%;
     font-size: 25px;
 }

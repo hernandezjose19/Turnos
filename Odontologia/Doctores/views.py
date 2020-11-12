@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from Doctores import forms
@@ -47,6 +48,9 @@ def TomandoTurnos(request):
             consul = cursor.fetchall()
             consulta = {"consulta":consul}
             return render(request, 'vuelta_home.html', consulta)
+        
+        else:
+            return HttpResponse("Numero asignado")
 
     else:
         formulario = forms.AsignandoTurnos()

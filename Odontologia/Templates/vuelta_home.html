@@ -1,12 +1,22 @@
-<h1>SU TURNO HA SIDO ASIGNADO CON EXITO!</h1>
-<a href=" {% url 'Home' %}">Volver al inicio</a>
-<a href="{% url 'Turnos_de_los_pacientes' %}">Podes ver la info de tu turno aca</a>
-
-{% for i in consulta %}
-
-<p>La fecha de su turno es: {{ i.0 }}</p>
-<p>A las: {{ i.1 }}</p>
-<p>En la especialidad de:{{i.2 }}</p>
-<p>Con el Doctor: {{i.3 }}</p>
-
-{% endfor %}
+{% load static %}
+<!DOCTYPE html>
+    <html>
+        <head>
+            <link rel="stylesheet"  href="{% static 'css/turnos_libres/data_turno_asignado.css' %}">
+        </head>
+        <body>
+            <header>
+                <h1>SU TURNO HA SIDO ASIGNADO CON EXITO!</h1>
+            </header>
+            <section>
+                {% for i in consulta %}
+                    <p>La fecha de su turno es: {{ i.0 }}</p>
+                    <p>A las: {{ i.1 }}</p>
+                    <p>En la especialidad de:{{i.2 }}</p>
+                    <p>Con el/la Doctor/a: {{i.3 }}</p>
+                    {% endfor %}
+            </section>
+            <a  href=" {% url 'Home' %}">Volver al inicio</a>
+            <a  href="{% url 'Turnos_de_los_pacientes' %}">ver info de tu turno aca</a>
+            
+    </html>

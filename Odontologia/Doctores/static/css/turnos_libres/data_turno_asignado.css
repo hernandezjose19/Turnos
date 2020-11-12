@@ -1,0 +1,38 @@
+body {
+    background: rgb(114, 35, 185);
+}
+
+header h1{
+    position: relative;
+    top: 50px;
+    left: 550px;
+    width: 700px;
+    color: seashell;
+}
+
+body section{
+    width: 500px;
+    position: relative;
+    top: 180px;
+    left: 700px;
+}
+
+body section p{
+    color: seashell;
+    font-size: 25px;
+    width: 1000px;
+    height: 60px;
+}
+
+body a{
+    width: 200px;
+    height: 100px;
+    margin: 20px;
+    position: relative;
+    left: 600px;
+    top: 200px  ;
+    color: rgb(247, 154, 87);
+    text-decoration: none;
+    font-size: 30px;
+}
+

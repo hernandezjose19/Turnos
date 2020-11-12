@@ -1,0 +1,44 @@
+body{
+    background: rgb(114, 38, 185);
+}
+
+header h1{
+    position: relative;
+    top: 30px;
+    width: 350px;
+    left: 700px;
+    color:seashell ;
+}
+
+body form{
+    position: relative;
+    left: 730px;
+    top: 200px;
+    width: 400px;
+    
+}
+
+body p{
+    color: rgb(247, 154, 87);
+    font-size: 25px;
+}
+
+body input{
+    font-size: 25px;
+    background: white;
+}
+body .Viendo{
+    font-size: 25px;
+    background: rgb(247, 154, 87);
+    position: relative;
+    left: 60px;
+}
+
+nav a{
+    text-decoration: none;
+    color: rgb(247, 154, 87);
+    position: relative;
+    top: 300px;
+    left: 750px;
+    font-size: 30px;
+}

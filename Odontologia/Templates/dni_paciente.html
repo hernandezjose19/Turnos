@@ -1,9 +1,20 @@
-{% extends "agendando_turnos.html" %}
-
-{% block h1 %}
-    <h1>Por favor ingrese su DNI</h1>
-{% endblock %}
-
-{% block input %}
-    <input type="submit" value="Ver mis turnos">
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+    <html>
+        <head>
+            <link rel="stylesheet"  href="{% static 'css/turnos_libres/mis_turnos.css' %}">
+        </head>
+        <body>
+            <header>
+               <h1 class="Titulo">Por favor ingrese su DNI</h1>
+            </header>
+            <form method="post">
+                {% csrf_token %}
+                {{ formu.as_p }}
+                <input class ="Viendo" type="submit" value="Ver mis turnos">
+            </form>
+            <nav>
+                <a href="{% url 'Turnos libres' %}">Volver a turnos libres</a>
+            </nav>
+        </body>
+    </html>

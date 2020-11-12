@@ -1,34 +1,34 @@
-<table>
-
-    <tr>
-
-        <th>Fecha</th>
-        <th>Hora</th>
-        <th>Paciente</th>
-        <th>DNI</th>
-        <th>Doctor</th>
-        <th>ID de turno disponible</th>
-
-
-    </tr>
-
-{% for datos in datos_turno_paciente %}
-
-    <tr>
-        <td>{{ datos.7 }}</td>
-        <td>{{ datos.8 }}</td>
-        <td>{{datos.1  }} {{ datos.2 }}</td>
-        <td>{{ datos.3 }}</td>
-        <td>{{ datos.9 }}</td>
-        <td> {{ datos.5 }}</td>
-
-        {% endfor %}
-
-    </tr>
-
-
-<a href="{% url 'Cambio_turnos_pacientes' %}">Cambiar un turno</a>
-<a href="{% url 'Cancelando_turnos' %}">Cancelar un turno</a>
-<a href="{% url 'Turnos_de_los_pacientes' %}">Volver a la busqueda</a>
-
-</table>
+{% load static %}
+<!DOCTYPE html>
+    <html>
+        <head>
+            <link rel="stylesheet"  href="{% static 'css/turnos_libres/mis_turnos_asignados.css' %}">
+        </head>
+        <body>
+            <header>
+                <a class = "Cambio" href="{% url 'Cambio_turnos_pacientes' %}">Cambiar un turno</a>
+                <a class = "Cancelar" href="{% url 'Cancelando_turnos' %}">Cancelar un turno</a>
+                <a class = "Busqueda" href="{% url 'Turnos_de_los_pacientes' %}">Volver a la busqueda</a>
+                <h1>Mis turnos asignados</h1>
+            </header>
+            <table>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Paciente</th>
+                    <th>DNI</th>
+                    <th>Doctor</th>
+                    <th>ID de turno disponible</th>
+                </tr>
+            {% for datos in datos_turno_paciente %}
+                <tr>
+                    <td>{{ datos.7 }}</td>
+                    <td>{{ datos.8 }}</td>
+                    <td>{{datos.1  }} {{ datos.2 }}</td>
+                    <td>{{ datos.3 }}</td>
+                    <td>{{ datos.9 }}</td>
+                    <td> {{ datos.5 }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+    </html>

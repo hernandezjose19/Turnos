@@ -1,0 +1,85 @@
+table{
+    position: relative;
+    top: 90px;
+    left: 510px;
+    border: 4px solid rgb(247, 154, 87);  
+    border-collapse: collapse;  
+}
+
+body{
+
+    background: rgb(114, 35, 185);
+}
+
+header h1{
+    width: 300px;
+    color: seashell;
+    position: relative;
+    top: 10px;
+    left: 800px;
+}
+
+table td{
+
+    border: 4px solid rgb(247, 154, 87);
+    color: seashell;
+    text-align: center;
+    font-size: 17px;
+    padding: 10px;
+    font-size: 20px;
+    border-collapse: collapse;
+}
+
+table th{
+
+    color: seashell;
+    border: 1px;
+    background: black;
+    text-align: center;
+    padding: 5px;
+}
+
+table tr:hover{
+    background:black;
+}
+
+table td:hover{
+    background: rgb(26, 211, 1);
+}
+
+nav{
+    position: relative;
+    top: 130px;
+    left: 750px;
+    width: 380px;
+}
+
+header .Cambio{
+    
+    color: rgb(247, 154, 87);
+    font-size: 25px;
+    text-decoration: none;
+    position: relative;
+    left: 880px;
+    top: 120px;
+}
+
+header .Cancelar{
+    color: rgb(247, 154, 87);
+    font-size: 25px;
+    text-decoration: none;
+    position: relative;
+    left: 1140px;
+    top: 120px;
+
+}
+
+header .Busqueda{
+    color: rgb(247, 154, 87);
+    font-size: 25px;
+    text-decoration: none;
+    position: relative;
+    left: 140px;
+    top: 120px;
+
+}

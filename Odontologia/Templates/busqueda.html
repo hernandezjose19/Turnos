@@ -1,10 +1,18 @@
-
-
-<h1>Ingrese el nombre del doctor</h1>
-<form method="post">
- {% csrf_token %}
- {{ resultado.as_p }}
- <input type="submit" value="Buscar">
-</form>
-
-<a href="{% url 'Home Login' %}">Volver a todos los turnos</a>
+{% load static %}
+<!DOCTYPE html>
+    <html>
+        <head>
+            <link rel="stylesheet"  href="{% static 'css/home_doctores/busqueda_avanzada.css' %}">
+        </head>
+        <body>
+            <header>
+                <h1>Ingrese nombre y apellido del doctor</h1>
+            </header>
+            <a href="{% url 'Home Login' %}">Volver a todos los turnos</a>
+            <form method="post">
+                {% csrf_token %}
+                {{ resultado.as_p }}
+                <input class = "Buscar" type="submit" value="Buscar">
+            </form>
+        </body>
+    </html>

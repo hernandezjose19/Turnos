@@ -15,7 +15,7 @@ class AsignandoTurnos(forms.Form):
 
 class BuscandoDoctor(forms.Form):
 
-    Doctor = forms.CharField(max_length=128, label="Busqueda por nombre de Doctor")
+    Doctor = forms.CharField(max_length=128, label="Nombre y Apellido del Doctor")
 
 class TurnosPaciente(forms.Form):
 

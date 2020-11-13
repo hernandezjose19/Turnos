@@ -1,0 +1,43 @@
+body {
+    background: rgb(114, 38, 185);
+}
+
+body h1{
+    width: 550px;
+    color: seashell;
+    position: relative;
+    top: 30px;
+    left: 630px;
+}
+
+body form{
+
+    width: 600px;
+    position: relative;
+    top: 110px;
+    left: 670px;
+}
+
+form p{
+    color: seashell;
+    font-size: 25px;
+}
+
+form input{
+    font-size: 30px;
+}
+
+form .Buscar{
+    background: rgb(247, 154, 87);
+    position: relative;
+    left: 110px;
+}
+
+body a{
+    text-decoration: none;
+    font-size: 30px;
+    position: relative;
+    top: 340px;
+    left: 700px;
+    color: rgb(247, 154, 87);
+}

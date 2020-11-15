@@ -1,10 +1,11 @@
-
+from django.views.generic import FormView
 from django.shortcuts import render
 from django.http import HttpResponse
 from Doctores import forms
 from Doctores.models import TurnosDisponibles, TurnosAsignados
 import sqlite3
 from django.contrib.auth.decorators import login_required
+
 
 
 #Esta les muestra a los doctores todos los turnos que se han registrado
@@ -182,4 +183,5 @@ def Cancelando_turno(request):
         formu = forms.CancelandoTurnos()
         ctx = {"formu": formu}
         return render(request, 'cancelando_turnos.html', ctx)
+
 

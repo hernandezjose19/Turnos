@@ -18,8 +18,8 @@ urlpatterns = [
     path('mis-turnos/', views.Turnos_pacientes, name = "Turnos_de_los_pacientes"),
     path('mis-turnos/cambiando-turno/', views.Cambiando_turnos_pacientes, name= "Cambio_turnos_pacientes"),
     path('mis-turnos/canclar-turno/', views.Cancelando_turno, name="Cancelando_turnos"),
-    path('reset-password/', PasswordResetView.as_view(), name = "Reseteo"),
-    path('reset-password/sent/', PasswordResetDoneView.as_view(), name = "Enviando_mail"),
+    path('reset-password/', PasswordResetView.as_view(template_name='reset_password_formu.html'), name = "Reseteo"),
+    path('password_reset/done/', PasswordResetDoneView.as_view(template_name='password_cambio_enviado.html'), name = "Enviando_mail"),
     path('reset-password/confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name="Confirmando_reseteo"),
     path('reset-password/complete', PasswordResetCompleteView.as_view(), name = "Reseteo_completado")
 

@@ -1,0 +1,41 @@
+body{
+    background: rgb(114, 38, 185);
+}
+
+body h1{
+    width: 420px;
+    color: seashell;
+    position: relative;
+    top: 30px;
+    left: 700px;
+}
+
+body form{
+    width: 400px;
+    position: relative;
+    top: 200px;
+    left: 750px;
+}
+
+body p{
+    font-size: 30px;
+    color: seashell;
+}
+
+body form .Resetear{
+    width: 200px;
+    font-size: 20px;
+    background: rgb(247, 154, 87);
+    position: relative;
+    left: 40px;
+}
+
+body a{
+    width: 200px;
+    position: relative;
+    top: 280px;
+    left: 790px;
+    color: rgb(247, 154, 87);
+    font-size: 30px;
+    text-decoration: none;
+}

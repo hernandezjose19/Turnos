@@ -1,4 +1,3 @@
-
 from django.forms import ModelForm
 from .models import TurnosAsignados
 from django import forms
@@ -32,3 +31,8 @@ class CancelandoTurnos(forms.Form):
 
 
     ID_Turno_actual = forms.IntegerField(label = "ID de turno a cancelar")
+
+
+class ResetPasswordForm(forms.Form):
+
+    username = forms.CharField(label="Nombre de usuario")

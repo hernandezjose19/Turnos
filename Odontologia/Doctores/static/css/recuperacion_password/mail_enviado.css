@@ -1,0 +1,11 @@
+body{
+    background: rgb(114, 38, 185);    
+}
+
+body h1{
+    width: 900px;
+    position: relative;
+    left: 490px;
+    color: seashell;
+
+}

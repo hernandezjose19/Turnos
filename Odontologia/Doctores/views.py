@@ -1,12 +1,13 @@
 from django.views.generic import FormView
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from Doctores import forms
 from Doctores.models import TurnosDisponibles, TurnosAsignados
 import sqlite3
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordResetView
 from django.urls import reverse_lazy
+from django.db import IntegrityError
 
 
 #Esta les muestra a los doctores todos los turnos que se han registrado
@@ -32,27 +33,28 @@ def TomandoTurnos(request):
 
         formu = forms.AsignandoTurnos(request.POST)
         if formu.is_valid():
+            try:
 
-            TurnosAsignados.objects.create(
-                Nombre = str(formu.cleaned_data["Nombre"]).title(),
-                Apellido = str(formu.cleaned_data["Apellido"]).title(),
-                DNI = formu.cleaned_data["DNI"],
-                Descripcion = formu.cleaned_data["Descripcion"],
-                ID_Turno_Disponible = formu.cleaned_data["id_turno_libre"]
+                TurnosAsignados.objects.create(
+                    Nombre = str(formu.cleaned_data["Nombre"]).title(),
+                    Apellido = str(formu.cleaned_data["Apellido"]).title(),
+                    DNI = formu.cleaned_data["DNI"],
+                    Descripcion = formu.cleaned_data["Descripcion"],
+                    ID_Turno_Disponible = formu.cleaned_data["id_turno_libre"]
 
-            )  
-            
-            a = formu.cleaned_data["id_turno_libre"]
-            conn = sqlite3.connect("db.sqlite3")
-            cursor = conn.cursor()
-            otra = ("SELECT d.Fecha, d.Hora, d.Especialidad, d.Doctor FROM Doctores_turnosasignados JOIN Doctores_turnosdisponibles AS d ON Doctores_turnosasignados.ID_Turno_Disponible == d.id WHERE Doctores_turnosasignados.ID_Turno_Disponible == ?", (a,))
-            cursor.execute(*otra)
-            consul = cursor.fetchall()
-            consulta = {"consulta":consul}
-            return render(request, 'vuelta_home.html', consulta)
+                )  
+                
+                a = formu.cleaned_data["id_turno_libre"]
+                conn = sqlite3.connect("db.sqlite3")
+                cursor = conn.cursor()
+                otra = ("SELECT d.Fecha, d.Hora, d.Especialidad, d.Doctor FROM Doctores_turnosasignados JOIN Doctores_turnosdisponibles AS d ON Doctores_turnosasignados.ID_Turno_Disponible == d.id WHERE Doctores_turnosasignados.ID_Turno_Disponible == ?", (a,))
+                cursor.execute(*otra)
+                consul = cursor.fetchall()
+                consulta = {"consulta":consul}
+                return render(request, 'vuelta_home.html', consulta)
         
-        else:
-            return HttpResponse("Numero asignado")
+            except IntegrityError:
+                return HttpResponse("ESTE TURNO YA ESTA ASIGNADO!")
 
     else:
         formulario = forms.AsignandoTurnos()

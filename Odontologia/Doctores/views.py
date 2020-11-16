@@ -5,7 +5,8 @@ from Doctores import forms
 from Doctores.models import TurnosDisponibles, TurnosAsignados
 import sqlite3
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.views import PasswordResetView
+from django.urls import reverse_lazy
 
 
 #Esta les muestra a los doctores todos los turnos que se han registrado
@@ -183,5 +184,11 @@ def Cancelando_turno(request):
         formu = forms.CancelandoTurnos()
         ctx = {"formu": formu}
         return render(request, 'cancelando_turnos.html', ctx)
+
+
+class PasswordResetView(PasswordResetView):
+
+    template_name = 'reset_password_formu.html'
+    html_email_template_name = 'reseteo_mail.html'
 
 

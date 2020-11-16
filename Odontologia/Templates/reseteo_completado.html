@@ -1,0 +1,12 @@
+{% load static %}
+<!DOCTYPE html>
+    <html>
+        <head>
+            <link rel="stylesheet"  href="{% static 'css/recuperacion_password/reseteo_completado.css' %}">
+
+        </head>
+        <body>
+            <h1>Se ha realizado tu cambio con exito!</h1>
+            <a href="{% url 'Login' %}">Login</a>
+        </body>
+    </html>

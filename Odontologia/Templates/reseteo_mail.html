@@ -1,0 +1,4 @@
+Hola {{ user.get_username }}, clickea en el siguiente link para cambiar tu password
+
+
+<h1>{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}</h1>

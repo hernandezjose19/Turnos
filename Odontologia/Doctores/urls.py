@@ -1,7 +1,7 @@
 
 from django.urls import path
 from Doctores import views
-from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetCompleteView
 from django.contrib.auth.decorators import login_required
 
 
@@ -18,12 +18,10 @@ urlpatterns = [
     path('mis-turnos/', views.Turnos_pacientes, name = "Turnos_de_los_pacientes"),
     path('mis-turnos/cambiando-turno/', views.Cambiando_turnos_pacientes, name= "Cambio_turnos_pacientes"),
     path('mis-turnos/canclar-turno/', views.Cancelando_turno, name="Cancelando_turnos"),
-    path('reset-password/', PasswordResetView.as_view(template_name='reset_password_formu.html'), name = "Reseteo"),
-    path('password_reset/done/', PasswordResetDoneView.as_view(template_name='password_cambio_enviado.html'), name = "Enviando_mail"),
-    path('reset-password/confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name="Confirmando_reseteo"),
-    path('reset-password/complete', PasswordResetCompleteView.as_view(), name = "Reseteo_completado")
-
-
+    path('reset-password/',views.PasswordResetView.as_view(), name = "Reseteo"),
+    path('password_reset/done/', PasswordResetDoneView.as_view(template_name= 'password_cambio_enviado.html'), name = "Enviando_mail"),
+    path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name='reset_passwords_new.html'),  name="Confirmando_reseteo"),
+    path('reset/done/', PasswordResetCompleteView.as_view(template_name = 'reseteo_completado.html'), name = "Reseteo_completado")
 
 
 ]

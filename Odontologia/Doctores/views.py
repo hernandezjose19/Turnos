@@ -47,7 +47,7 @@ def tomando_turnos(request):
                 return render(request, 'vuelta_home.html', consulta)
         
             except IntegrityError:
-                return HttpResponse("ESTE TURNO YA ESTA ASIGNADO! :)")
+                return render(request, 'turno_ya_asignado.html')
 
     else:
         formulario = forms.AsignandoTurnos()
@@ -55,7 +55,7 @@ def tomando_turnos(request):
         return render(request, 'agendando_turnos.html', ctx)
 
 
-#Aca muestra todos los turnos disponibles
+#Esta vista muestra todos los turnos disponibles
 def mostrando_turnos(request):
     
     conex = sqlite3.connect("db.sqlite3")
@@ -74,7 +74,7 @@ def home(request):
     return render(request, 'home.html')
 
 
-#Esta vista permite a los doctores filtrar las busquedas por nombre de Doctor
+#Esta vista permite a los doctores filtrar los turnos por nombre de doctor
 @login_required
 def busqueda_avanzada(request):
     
@@ -119,26 +119,20 @@ def turnos_pacientes(request):
         return render(request, 'dni_paciente.html', ctx )
 
 
-#Los pacientes cambian sus turnos colocando el id del turno al cual quieren cambiar y seguido  su id de turno actual
+
 def cambiando_turnos_pacientes(request):
     
     if request.method == "POST":
         formu = forms.CambiandoTurnos(request.POST)
         if formu.is_valid():
             try:
-                id_nuevo = formu.cleaned_data["ID_turno_nuevo"]
-                id_actual = formu.cleaned_data["ID_turno_actual"]
-                conex = sqlite3.connect("db.sqlite3")
-                cursor = conex.cursor()
-                consulta = (
-                    "UPDATE Doctores_turnosasignados SET ID_Turno_Disponible = ? WHERE ID_Turno_Disponible == (?)", (id_nuevo, id_actual)
-                )
-                cursor.execute(*consulta)
-                conex.commit()
-                conex.close()
+                actualizando = TurnosAsignados.objects.filter(
+                    ID_Turno_Disponible = formu.cleaned_data['ID_turno_actual']
+                ).update(ID_Turno_Disponible = formu.cleaned_data['ID_turno_nuevo'])
                 return render(request, 'turno_cambiado.html')
+
             except IntegrityError:
-                return HttpResponse("El turno al que intenta cambiar ya esta ocupado")
+                return render(request, 'error_cambio_de_turno.html')
 
     else:
         formu = forms.CambiandoTurnos()

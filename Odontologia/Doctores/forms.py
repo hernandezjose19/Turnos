@@ -24,8 +24,9 @@ class TurnosPaciente(forms.Form):
 
 class CambiandoTurnos(forms.Form):
 
-    ID_turno_nuevo = forms.IntegerField(label="ID de Turno nuevo")
     ID_turno_actual = forms.IntegerField(label="ID de turno actual")
+    ID_turno_nuevo = forms.IntegerField(label="ID de Turno nuevo")
+
     
 
 class CancelandoTurnos(forms.Form):

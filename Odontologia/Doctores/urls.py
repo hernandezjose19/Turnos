@@ -15,7 +15,7 @@ urlpatterns = [
     path('acceso/home/busqueda/', login_required(views.busqueda_avanzada), name = "Busqueda avanzada"),
     path('mis-turnos/', views.turnos_pacientes, name = "Turnos_de_los_pacientes"),
     path('mis-turnos/cambiando-turno/', views.cambiando_turnos_pacientes, name= "Cambio_turnos_pacientes"),
-    path('mis-turnos/canclar-turno/', views.cancelando_turno, name="Cancelando_turnos"),
+    path('mis-turnos/cancelar-turno/', views.cancelando_turno, name="Cancelando_turnos"),
     path('reset-password/',views.PasswordResetView.as_view(), name = "Reseteo"),
     path('password_reset/done/', PasswordResetDoneView.as_view(template_name= 'password_cambio_enviado.html'), name = "Enviando_mail"),
     path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name='reset_passwords_new.html'),  name="Confirmando_reseteo"),

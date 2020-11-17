@@ -32,6 +32,7 @@ class CambiandoTurnos(forms.Form):
 class CancelandoTurnos(forms.Form):
 
     ID_Turno_actual = forms.IntegerField(label = "ID de turno a cancelar")
+    DNI = forms.IntegerField(label="DNI")
 
 
 class ResetPasswordForm(forms.Form):

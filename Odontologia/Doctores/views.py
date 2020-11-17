@@ -12,7 +12,7 @@ from Doctores.models import TurnosDisponibles, TurnosAsignados
 
 #Esta les muestra a los doctores todos los turnos que se han registrado
 @login_required
-def Inicio(request):
+def inicio(request):
     
     conn = sqlite3.connect("db.sqlite3") 
     cursor = conn.cursor()
@@ -24,7 +24,7 @@ def Inicio(request):
 
 
 #Aca los pacientes se asignan sus turnos
-def TomandoTurnos(request):
+def tomando_turnos(request):
     
     if request.method == "POST":
         formu = forms.AsignandoTurnos(request.POST)
@@ -56,7 +56,7 @@ def TomandoTurnos(request):
 
 
 #Aca muestra todos los turnos disponibles
-def MostrandoTurnos(request):
+def mostrando_turnos(request):
     
     conex = sqlite3.connect("db.sqlite3")
     cursor = conex.cursor()
@@ -69,14 +69,14 @@ def MostrandoTurnos(request):
     return render(request, 'turnos_disponibles.html', ctx)
 
 
-def Home(request):
+def home(request):
     
     return render(request, 'home.html')
 
 
 #Esta vista permite a los doctores filtrar las busquedas por nombre de Doctor
 @login_required
-def Busqueda_avanzada(request):
+def busqueda_avanzada(request):
     
     if request.method == "POST":
         formu = forms.BuscandoDoctor(request.POST)
@@ -98,7 +98,7 @@ def Busqueda_avanzada(request):
 
 
 #Esta vissta muestra los turnos a los pacientes una vez ingresado su dni
-def Turnos_pacientes(request):    
+def turnos_pacientes(request):    
     
     if request.method == "POST":        
         formu = forms.TurnosPaciente(request.POST)        
@@ -120,7 +120,7 @@ def Turnos_pacientes(request):
 
 
 #Los pacientes cambian sus turnos colocando el id del turno al cual quieren cambiar y seguido  su id de turno actual
-def Cambiando_turnos_pacientes(request):
+def cambiando_turnos_pacientes(request):
     
     if request.method == "POST":
         formu = forms.CambiandoTurnos(request.POST)
@@ -146,7 +146,7 @@ def Cambiando_turnos_pacientes(request):
         return render(request, 'cambiando_turnos.html', ctx)
 
 
-def Cancelando_turno(request):
+def cancelando_turno(request):
     
     if request.method == "POST":
         formu = forms.CancelandoTurnos(request.POST)

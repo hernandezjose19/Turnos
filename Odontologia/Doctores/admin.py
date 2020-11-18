@@ -1,3 +1,4 @@
 from django.contrib import admin
+from Doctores.models import TurnosDisponibles
 
-# Register your models here.
+admin.site.register(TurnosDisponibles)

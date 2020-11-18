@@ -17,4 +17,8 @@ class TurnosAsignados(models.Model):
     Descripcion = models.TextField(max_length=65535)
     ID_Turno_Disponible = models.IntegerField(unique=True)
 
+    def __str__(self):
+
+        return self.Doctor
+
 

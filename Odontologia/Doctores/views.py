@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import PasswordResetView
 from django.urls import reverse_lazy
 from django.db import IntegrityError
+from django.core.exceptions import ObjectDoesNotExist
 from Doctores import forms
 from Doctores.models import TurnosDisponibles, TurnosAsignados
 
@@ -145,22 +146,26 @@ def cancelando_turno(request):
     if request.method == "POST":
         formu = forms.CancelandoTurnos(request.POST)
         if formu.is_valid():
-            id_formulario = formu.cleaned_data['ID_Turno_actual']
-            dni_formulario = formu.cleaned_data['DNI']
-            filtro = TurnosAsignados.objects.get(ID_Turno_Disponible = id_formulario)
-            filtro_dni = filtro.DNI
-            if filtro_dni == dni_formulario:
-                conex = sqlite3.connect("db.sqlite3")
-                cursor = conex.cursor()
-                id_turno_actual = formu.cleaned_data['ID_Turno_actual']
-                sql = ('DELETE FROM Doctores_turnosasignados WHERE ID_Turno_Disponible = ?', (id_turno_actual,))
-                cursor.execute(*sql)
-                conex.commit()
-                conex.close()
-                return render(request, 'turno_cancelado.html')
+            try:
+                id_formulario = formu.cleaned_data['ID_Turno_actual']
+                dni_formulario = formu.cleaned_data['DNI']
+                filtro = TurnosAsignados.objects.get(ID_Turno_Disponible = id_formulario)
+                filtro_dni = filtro.DNI
+                if filtro_dni == dni_formulario:
+                    conex = sqlite3.connect("db.sqlite3")
+                    cursor = conex.cursor()
+                    id_turno_actual = formu.cleaned_data['ID_Turno_actual']
+                    sql = ('DELETE FROM Doctores_turnosasignados WHERE ID_Turno_Disponible = ?', (id_turno_actual,))
+                    cursor.execute(*sql)
+                    conex.commit()
+                    conex.close()
+                    return render(request, 'turno_cancelado.html')
 
-            else:
-                return render(request, 'error_cancelar.html')
+                else:
+                    return render(request, 'error_cancelar.html')
+
+            except ObjectDoesNotExist:
+                return render(request, 'turno_no_existe.html')
 
     else:
         formu = forms.CancelandoTurnos()
